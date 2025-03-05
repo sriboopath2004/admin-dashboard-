@@ -1,9 +1,7 @@
 import React , { useEffect} from "react";
 import logo from "./Assets/Logo.png";
-import hamburgerimgae from './Assets/hamburgerimgae.png';
-import notificationbell from './Assets/notificationbell.png';
-import darkmode from './Assets/darkmode.png';
-import profileicon from './Assets/profileicon.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faBell, faUser, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 function Notifications() {
@@ -35,13 +33,13 @@ function Notifications() {
                 </div>
                 <div style={{ height: "20px" }}></div>
                 <ul style={{ display: "flex",alignItems: "end" ,flexDirection: "column", paddingLeft: "30%", padding: "0" }}>
-                  <li onClick={handleNavigate} style={{ marginBottom: "10px", fontSize: "large",display: "flex", justifyContent: "center" }}>Dashboard</li>
+                  <li onClick={handleNavigate} style={{ marginBottom: "10px", fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" }}>Dashboard</li>
                   <li  style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer"  }}>Order</li>
-                  <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center" }}>Menu</li>
-                  <li onClick={()=>navigate(-2)} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center"  }}>Customer</li>
-                  <li onClick={()=>navigate(-1)} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center" }}>Supplier</li>
-                  <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",color: "#ff3131"  }}>Notification</li>
-                  <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center"  }}>Support</li>
+                  <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" }}>Menu</li>
+                  <li onClick={()=>navigate(-2)} style={{ marginBottom: "10px" , fontSize: "large",cursor: "pointer",display: "flex", justifyContent: "center"  }}>Customer</li>
+                  <li onClick={()=>navigate(-1)} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" }}>Supplier</li>
+                  <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",color: "#ff3131",cursor: "pointer"  }}>Notification</li>
+                  <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer"  }}>Support</li>
                 </ul>
                 <div style={{ fontSize: "12px", color: "#999", position: "absolute", bottom: "20px" }}>
                   <h4 style={{ marginLeft: "21%",width:"60%", color: "#ffffff", display: "flex", justifyContent: "center" }}>Crave Corner Admin Dashboard</h4> 
@@ -49,26 +47,18 @@ function Notifications() {
                 </div>
               </div>
             </div>
-              <nav style={{ marginTop: "0.8%", display: "flex", justifyContent: "space-between", alignItems: "center",marginLeft: "20%", backgroundColor: "#373754", width: "79vw", borderRadius: "5px" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <button style={{ marginRight: "10px", width: "40%", height: "40%",border: "none", backgroundColor: "#373754" }}>
-                  <img src={hamburgerimgae} alt="hamburger" style={{ width: "42%",height: "42%" }} />
-                </button>
+           <nav style={{ marginTop: "0.8%", display: "flex", justifyContent: "space-between", alignItems: "center",marginLeft: "20%", backgroundColor: "#373754", width: "79vw", borderRadius: "5px" }}>
+              <div style={{ display: "flex", alignItems: "center", paddingLeft: "3%" }}>
+              <FontAwesomeIcon icon={faBars} size="2x" color="black" /> {/* Hamburger Icon */}
                 <div style={{ display: "flex", alignItems: "center", backgroundColor: "white", padding: "10px", borderRadius: "5px",backgroundColor: "#373754", width: "200px", }}>
-                  <input type="search"  placeholder="Search here" style={{ borderRadius: "20px", padding: "10px", fontSize: "16px", border: "2px solid", width: "90%",height: "30px" }} />
-                  
-                </div>
+                   <input type="text" placeholder="Search...     🔍 " style={{ display: "flex", justifyContent: "center", width: "70%", padding: "8px",paddingLeft: '7%',border: "none" ,borderRadius: "20px", fontSize: "19px" }} />
+                   {/* <FontAwesomeIcon icon={faSearch} size="2x" style={{ color: "black" }} /> */}
+               </div>
               </div>
-              <div style={{ display: "flex",  justifyContent: "flex-end", paddingLeft: "20%" }}>
-                <button style={{ marginRight: "20px",border: "none", width: "20%", height: "30%", backgroundColor: "#373754" }}>
-                  <img src={notificationbell} alt="notifivationbell"  style={{ paddingLeft: "40%", width: "22%", height: "15%" }} />
-                </button>
-                <button style={{ marginRight: "20px", width: "20%", height: "30%",border: "none", backgroundColor: "#373754",paddingTop: "1%" }}>
-                  <img src={darkmode} alt="darkmode"  style={{ width: "17%", height: "20%", marginTop: "2%" }} />
-                </button>
-                <button style={{ border: "none", backgroundColor: "#373754" }}>
-                  <img src={profileicon} alt="Profile Icon"  style={{ width: "30px", height: "30px", borderRadius: "50%" }} />
-                </button>
+              <div style={{ display: "flex",  justifyContent: "space-evenly", width: "20%" }}>
+              <FontAwesomeIcon icon={faBell} size="2x" color="black" /> {/* Notification Icon */}
+              <FontAwesomeIcon icon={faMoon} size="2x" color="black" /> {/* Dark Mode Icon */}
+              <FontAwesomeIcon icon={faUser} size="2x" color="black" /> {/* User Icon */}
               </div>
             </nav>
             <div style={{ height: "70px", fontFamily: "poppins",color: "#ffffff", background: "#2b2c40" }}>
