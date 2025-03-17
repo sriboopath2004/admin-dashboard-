@@ -26,9 +26,10 @@ function FoodDetails() {
       }, []);
 
    const navigate = useNavigate();
-   const handleNavigate = () => {
-    navigate("/CustomerDetails");
-  }
+   
+     const handleNavigation = (path) => {
+       navigate(path);
+     };
 
   return (
     <div>
@@ -36,20 +37,20 @@ function FoodDetails() {
             <div style={{ width: "18%", borderColor: "black", border: "2px solid #373754", backgroundColor: "#373754",color: "#ffffff", padding: "20px", height: "92.9vh" }}>
               <div style={{ marginBottom: "20px",paddingTop: "3%",paddingLeft: "23%", display: "flex", width: "13vw", height: "9vh" }}>
                 <img src={logo} alt="Logo" style={{ paddingTop: "2%", width: "55px", height: "35px" }} />
-                <h3 style={{ marginLeft: "10px" }}>Admin</h3>
+                <h3 style={{ marginLeft: "10px",fontSize: "22px" }}>Admin</h3>
               </div>
               <div>
               <span style={{ textDecoration: "underline", border: "1px solid #ff3131", width: "100%", display: "inline-block", marginBottom: "3%" }}></span>
               </div>
               <div style={{ height: "20px" }}></div>
               <ul style={{ display: "flex",alignItems: "end" ,flexDirection: "column", paddingLeft: "30%", padding: "0" }}>
-                <li  style={{  marginBottom: "10px", fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" }}>Dashboard</li>
-                <li  style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer"  }}>Order</li>
-                <li onClick={()=> navigate(-1)} style={{ marginBottom: "10px" ,color: "#ff3131", fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" }}>Menu</li>
-                <li onClick={handleNavigate} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer"  }}>Customer</li>
-                <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" }}>Supplier</li>
-                <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center" ,cursor: "pointer" }}>Notification</li>
-                <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer"  }}>Support</li>
+                <li  onClick={() => handleNavigation("/Dashboard")} style={{ marginBottom: "10px", fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer",fontSize: "21px" }}>Dashboard</li>
+                <li  onClick={() => handleNavigation("/OrderDetails")} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" ,fontSize: "21px" }}>Order</li>
+                <li style={{ marginBottom: "10px" ,color: "#ff3131", fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer",fontSize: "21px" }}>Menu</li>
+                <li  onClick={() => handleNavigation("/CustomerDetails")} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" ,fontSize: "21px" }}>Customer</li>
+                <li  onClick={() => handleNavigation("/SupplierInfo")} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer",fontSize: "21px" }}>Supplier</li>
+                <li  onClick={() => handleNavigation("/Notifications")} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center" ,cursor: "pointer",fontSize: "21px" }}>Notification</li>
+                <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" ,fontSize: "21px" }}>Support</li>
               </ul>
               <div style={{ fontSize: "12px", color: "#999", position: "absolute", bottom: "20px" }}>
                 <h4 style={{ marginLeft: "21%",width:"60%", color: "#ffffff", display: "flex", justifyContent: "center" }}>Crave Corner Admin Dashboard</h4> 
@@ -71,9 +72,9 @@ function FoodDetails() {
           </div>
         </nav>
     <div style={{ height: "70px", fontFamily: "poppins",color: "#ffffff", background: "#2b2c40" }}>
-    <div style={{ marginLeft: "22%",paddingTop: "1%",  width: "40%", height: "90px" }}>
-        <h3 style={{ marginTop: "-0.1%" }}>Foods</h3>
-        <h4 style={{ marginTop: "-3.5%" }}>This is your food menu list</h4>
+    <div style={{ marginLeft: "22%",paddingTop: "1%",  width: "40%", height: "55px" }}>
+        <h3 style={{ marginTop: "-0.1%", fontSize: "25px" }}>Foods</h3>
+        <h4 style={{ marginTop: "-3.5%",fontSize: "20px" }}>This is your food menu list</h4>
         <div style={{ marginTop: "-10%"  ,marginLeft: "120%", width: "40%",height: "30%", display: "flex", justifyContent: "flex-start"}} >
          <input type="search" placeholder="Search here" style={{ borderRadius: "20px", padding: "10px", fontSize: "16px", border: "2px solid",height: "30px", width: "70%" }} /> 
         </div>

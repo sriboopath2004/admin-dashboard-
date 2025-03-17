@@ -1,4 +1,4 @@
-import React , { useEffect} from "react";
+import React , { useEffect , useState} from "react";
 import logo from "./Assets/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faBell, faUser, faMoon } from "@fortawesome/free-solid-svg-icons";
@@ -6,46 +6,51 @@ import { useNavigate } from "react-router-dom";
 import profileimage from "./Assets/profileimage.png";
 
 function AdminMenu() {
+
+  const [darkMode, setDarkMode] = useState(true); // Default is dark mode
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.style.backgroundColor = "#2b2c40";
+      document.body.style.color = "white";
+    } else {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+    }
+  }, [darkMode]);
+
     const barStyle = (height) => ({
       height: "40px",
       width: '30px',
       backgroundColor: '#e63946', // Red color for the bars
       borderRadius: '5px',
     });
-    useEffect(() => {
-      // Set background color outside the div (on the whole page)
-      document.body.style.backgroundColor = "#2b2c40";
-  
-      // Cleanup function to reset background when component unmounts
-      return () => {
-        document.body.style.backgroundColor = "white";
-      };
-    }, []);
+    
     const navigate = useNavigate();
+    const handleNavigation = (path) => {
+      navigate(path);
+    };
 
-    const handleNavigate = () => {
-      navigate("/OrderDetails");
-    }
   return (
     <div>
     <div style={{ display: "flex", width: "90vw", height: "0vh", fontFamily: "poppins" }}>
       <div style={{ width: "18%", borderColor: "black", border: "2px solid #373754", backgroundColor: "#373754",color: "#ffffff", padding: "20px", height: "92.9vh" }}>
         <div style={{ marginBottom: "20px",paddingTop: "3%",paddingLeft: "23%", display: "flex", width: "13vw", height: "9vh" }}>
           <img src={logo} alt="Logo" style={{ paddingTop: "2%", width: "55px", height: "35px" }} />
-          <h3 style={{ marginLeft: "10px" }}>Admin</h3>
+          <h3 style={{ marginLeft: "10px",fontSize: "22px" }}>Admin</h3>
         </div>
         <div>
         <span style={{ textDecoration: "underline", border: "1px solid #ff3131", width: "100%", display: "inline-block", marginBottom: "3%" }}></span>
         </div>
         <div style={{ height: "20px" }}></div>
         <ul style={{ display: "flex",alignItems: "end" ,flexDirection: "column", paddingLeft: "30%", padding: "0" }}>
-          <li style={{ marginBottom: "10px", color: "#ff3131", fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" }}>Dashboard</li>
-          <li onClick={handleNavigate} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer"  }}>Order</li>
-          <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" }}>Menu</li>
-          <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer"  }}>Customer</li>
-          <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" }}>Supplier</li>
-          <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer"  }}>Notification</li>
-          <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer"  }}>Support</li>
+          <li style={{ marginBottom: "10px", color: "#ff3131", fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer",fontSize: "21px" }}>Dashboard</li>
+          <li onClick={() => handleNavigation("/OrderDetails")} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",fontSize: "21px",cursor: "pointer"  }}>Order</li>
+          <li onClick={() => handleNavigation("/FoodDetails")} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer",fontSize: "21px" }}>Menu</li>
+          <li onClick={() => handleNavigation("/CustomerDetails")} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer",fontSize: "21px"  }}>Customer</li>
+          <li onClick={() => handleNavigation("/SupplierInfo")} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer",fontSize: "21px" }}>Supplier</li>
+          <li onClick={() => handleNavigation("/Notifications")} style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer",fontSize: "21px"  }}>Notification</li>
+          <li style={{ marginBottom: "10px" , fontSize: "large",display: "flex", justifyContent: "center",cursor: "pointer" ,fontSize: "21px" }}>Support</li>
         </ul>
         <div style={{ fontSize: "12px", color: "#999", position: "absolute", bottom: "20px" }}>
           <h4 style={{ marginLeft: "21%",width:"60%", color: "#ffffff", display: "flex", justifyContent: "center" }}>Crave Corner Admin Dashboard</h4> 
@@ -63,7 +68,7 @@ function AdminMenu() {
       </div>
       <div style={{ display: "flex",  justifyContent: "space-evenly", width: "20%" }}>
       <FontAwesomeIcon icon={faBell} size="2x" color="black" /> {/* Notification Icon */}
-      <FontAwesomeIcon icon={faMoon} size="2x" color="black" /> {/* Dark Mode Icon */}
+      <FontAwesomeIcon icon={faMoon} onClick={() => setDarkMode(!darkMode)} size="2x" color="black" /> {/* Dark Mode Icon */}
       <FontAwesomeIcon icon={faUser} size="2x" color="black" /> {/* User Icon */}
       </div>
     </nav>
@@ -142,7 +147,7 @@ function AdminMenu() {
       </button>
       </div>
      </div>
-     <div style={{  height: "390px",marginTop: "-29%" ,width: "31%",backgroundColor: "#373754" ,borderRadius: "20px" , fontFamily: "poppins",marginLeft: "67%", display: "flex", flexDirection: "column", justifyContent: "center",alignItems: "center" }}>
+     <div style={{  height: "412px",marginTop: "-30.2%" ,width: "31%",backgroundColor: "#373754" ,borderRadius: "20px" , fontFamily: "poppins",marginLeft: "67%", display: "flex", flexDirection: "column", justifyContent: "center",alignItems: "center" }}>
         <h2 style={{ marginLeft: "8%",color: "#ffffff", fontFamily: "poppins" }}>Customers Reviews</h2>
     <div style={{ backgroundColor: "#2b2c40", width: "80%" ,position: "relative", padding: "10px", borderRadius: "15px" }}>
       <div style={{ display: "flex", flexDirection: "row", height: "80px" }}> 
